@@ -19,7 +19,6 @@ class SeqParse():
                             "rrcj", "ltoo", "jaiwoz",
                             "jakvpt"
                         ]
-        i = 1
         for seq_file in seq_files:
             with open(f".\\temp\\{seq_file}", 'r') as seqfh:
                 for seq_record in SeqIO.parse(seqfh, "fasta"):
@@ -29,7 +28,4 @@ class SeqParse():
                         any(item in id for item in exept_id_list)):
                         continue
                     else:
-                        print(f"{i}\t{seq_record.description}\t{repr(seq_record.seq)}\t{len(seq_record.seq)}bp")
-                        i += 1
-
-        pass            
+                        yield seq_record

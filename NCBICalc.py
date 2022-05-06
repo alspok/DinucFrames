@@ -21,8 +21,8 @@ def ncbiCalc():
    DelFiles().delFiles()
    
    """Download letest version of datasets.exe file"""   
-   # DownloadDatasets().downloadDatasets()
-      
+   DownloadDatasets().downloadDatasets()
+         
    """Get list of assembly access list of taxon from ncbi"""
    assmbl_list = NCBIData().ncbiGenomeData(taxon_name)
    # [print(f"{i+1}\t {assmbl}") for (i, assmbl) in enumerate(assmbl_list)]
@@ -31,7 +31,8 @@ def ncbiCalc():
    for accession in assmbl_list:
       print(f"\nTaxon {taxon_name}: assembly {i} of {len(assmbl_list)}")
       seq_files = NCBIData().ncbiSeqData(accession)
-      ret = SeqParse().seqParse(seq_files)
+      for item in SeqParse().seqParse(seq_files):
+         print(f"{item.description}\t{repr(item.seq)}")
       DelFiles().delFiles()
       i += 1
       
