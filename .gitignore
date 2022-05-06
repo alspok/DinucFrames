@@ -1,4 +1,5 @@
 .vscode/
 .venv/
+Temp/*.*
 __pycache__/
 *.sqlite3
