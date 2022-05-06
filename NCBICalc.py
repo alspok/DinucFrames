@@ -31,7 +31,7 @@ def ncbiCalc():
    for accession in assmbl_list:
       print(f"\nTaxon {taxon_name}: assembly {i} of {len(assmbl_list)}")
       seq_files = NCBIData().ncbiSeqData(accession)
-      SeqParse().seqParse(seq_files)
+      ret = SeqParse().seqParse(seq_files)
       DelFiles().delFiles()
       i += 1
       

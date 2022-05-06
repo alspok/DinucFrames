@@ -13,7 +13,7 @@ class NCBIData():
     
     def ncbiGenomeData(self, taxon_name: str) -> list:
         """Download taxon assembly accession numbers to summary.json file from nsbi"""        
-        print("Downloading taxon assembly accessions...")
+        print(f"Downloading {taxon_name} assembly accessions...")
         os.chdir(iv.path)
         subprocess.run(f".\\bin\\datasets summary genome taxon {taxon_name} \
                         --as-json-lines \
