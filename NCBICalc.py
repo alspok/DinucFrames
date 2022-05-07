@@ -6,6 +6,7 @@ import sys
 import os
 
 from Classes.SeqParse import SeqParse
+from Classes.SqliteDB import SqliteDB
 
 def ncbiCalc():
    """Run script from command line with taxon name as argument or edit taxon_name in InitValues class """
@@ -33,12 +34,13 @@ def ncbiCalc():
       seq_files = NCBIData().ncbiSeqData(accession)
       seq_oblect = SeqParse().seqParse(seq_files) 
       for seq_obj in seq_oblect:
-         db_dict = {}
+         db_dict = iv.db_dict
          print(f"{seq_obj.description}\t{repr(seq_obj.seq)}")
          db_dict["name"] = seq_obj.id
          db_dict["description"] = seq_obj.description
          db_dict["seq_length"] = len(seq_obj.seq)
-         print(db_dict)
+         sqliteDB = SqliteDB(iv.db_name, iv.db_table)
+         sqliteDB.insertRow()
          
       DelFiles().delFiles()
       i += 1
