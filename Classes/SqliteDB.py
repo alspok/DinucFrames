@@ -14,7 +14,7 @@ class SqliteDB():
             Column('id', Integer, primary_key = True),
             Column('name', String),
             Column('description', String),
-            Column('seq_length'), Integer,
+            Column('seq_length', Integer),
             Column("gc_percent", Float),
             Column('di_diff', String),
             Column('mono_shuffle_di_diff', String),
