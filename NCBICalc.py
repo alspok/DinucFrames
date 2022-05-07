@@ -15,14 +15,15 @@ def ncbiCalc():
    else:
       taxon_name = sys.argv[1]
       
-   """Change for folder to working"""   
-   # os.chdir(os.path.dirname(os.path.abspath(__file__)))
+   """Creat or not temp folder"""
+   if not os.path.exists("Temp"):
+      os.mkdir("Temp")
    
    """Make .\\temp folder empty"""
    DelFiles().delFiles()
    
    """Download letest version of datasets.exe file"""   
-   # DownloadDatasets().downloadDatasets()
+   DownloadDatasets().downloadDatasets()
          
    """Get list of assembly access list of taxon from ncbi"""
    assmbl_list = NCBIData().ncbiGenomeData(taxon_name)
@@ -35,11 +36,10 @@ def ncbiCalc():
       seq_oblect = SeqParse().seqParse(seq_files) 
       for seq_obj in seq_oblect:
          seq_dict = {}
-         print(f"{seq_obj.description}\t{repr(seq_obj.seq)}")
+         print(f"{seq_obj.description}\t{repr(seq_obj.seq)}\t{len(seq_obj.seq)} bp")
          seq_dict["name"] = seq_obj.id
          seq_dict["description"] = seq_obj.description
          seq_dict["seq_length"] = len(seq_obj.seq)
-         
          
          
          sqliteDB = SqliteDB(iv.db_name, iv.db_table).initTable()

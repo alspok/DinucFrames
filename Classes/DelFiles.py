@@ -4,10 +4,11 @@ class DelFiles():
         pass
     
     def delFiles(self) -> None:
-        cwd = os.getcwd()
-        path = f"{cwd}\\temp"
-        os.chdir(path)
-        for file in os.listdir(path):
-                os.remove(file)
+        if os.path.exists("Temp"):
+            cwd = os.getcwd()
+            path = f"{cwd}\\temp"
+            os.chdir(path)
+            for file in os.listdir(path):
+                    os.remove(file)
         
         pass

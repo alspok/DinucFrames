@@ -7,7 +7,7 @@ class InitValues():
     # taxon_name = "Escherichia coli"
     # taxon_name = "Escherichia"
     # taxon_name = "Bacillus"
-    # taxon_name = "Archaea"
+    taxon_name = "Archaea"
     # taxon_name = "Bacteria"
     # taxon_name = "Eukaryota"
     # taxon_name = "Viruses"
