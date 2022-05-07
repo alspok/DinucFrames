@@ -1,3 +1,5 @@
+import os
+
 """Class of init values"""
 class InitValues():
     taxon_name = "Methanomassiliicoccaceae"
@@ -16,7 +18,8 @@ class InitValues():
     
     path = "C:\\Users\\hp\\source\\repos\\DinucFrames"
     
-    seq_path = "C:\\Users\\hp\\source\\repos\\Sequencies\\Procaryote\\Plasmids\\"
+    # seq_path = "C:\\Users\\hp\\source\\repos\\Sequencies\\Procaryote\\Plasmids\\"
+    seq_path = os.getcwd()
     db_name = "dinuc.sqlite3"
     db_table = "dinuc"
     oligo_length = 2
