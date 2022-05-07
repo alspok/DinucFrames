@@ -1,5 +1,4 @@
 .vscode/
-Temp/*.*
 __pycache__/
 *.sqlite3
 *.zip
