@@ -39,7 +39,8 @@ def ncbiCalc():
          db_dict["name"] = seq_obj.id
          db_dict["description"] = seq_obj.description
          db_dict["seq_length"] = len(seq_obj.seq)
-         sqliteDB = SqliteDB(iv.db_name, iv.db_table)
+         
+         sqliteDB = SqliteDB(iv.db_name, iv.db_table).initTable()
          sqliteDB.insertRow()
          
       DelFiles().delFiles()
