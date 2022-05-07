@@ -34,14 +34,16 @@ def ncbiCalc():
       seq_files = NCBIData().ncbiSeqData(accession)
       seq_oblect = SeqParse().seqParse(seq_files) 
       for seq_obj in seq_oblect:
-         db_dict = iv.db_dict
+         seq_dict = {}
          print(f"{seq_obj.description}\t{repr(seq_obj.seq)}")
-         db_dict["name"] = seq_obj.id
-         db_dict["description"] = seq_obj.description
-         db_dict["seq_length"] = len(seq_obj.seq)
+         seq_dict["name"] = seq_obj.id
+         seq_dict["description"] = seq_obj.description
+         seq_dict["seq_length"] = len(seq_obj.seq)
+         
+         
          
          sqliteDB = SqliteDB(iv.db_name, iv.db_table).initTable()
-         sqliteDB.insertRow()
+         sqliteDB.insertRow(seq_dict)
          
       DelFiles().delFiles()
       i += 1

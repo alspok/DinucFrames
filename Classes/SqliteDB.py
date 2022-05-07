@@ -24,7 +24,7 @@ class SqliteDB():
         meta.create_all(self.engine)
         return self
         
-    def insertRow(self) -> None:
+    def insertRow(self, seq_dict: dict) -> None:
         with self.engine.connect() as conn:
-            conn.execute(self.table.insert(), iv.db_dict)
+            conn.execute(self.table.insert(), seq_dict)
         pass
