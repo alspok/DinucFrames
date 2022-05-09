@@ -13,11 +13,18 @@ class SeqParse():
                             "chloroplast", "partial"
                         ]
         exept_id_list = [
-                            "jahley", "smom", "nw",
-                            "jaal", "jabw", "aace",
-                            "wbvu", "jabmlo", "jahhpk",
-                            "rrcj", "ltoo", "jaiwoz",
-                            "jakvpt"
+                            "aace",
+                            "jahley", "jaal", "jabw",
+                            "jabmlo", "jahhpk", "jaiwoz",
+                            "jakvpt", "jafkak", "jaifh",
+                            "jaiwqd", "jaifhz",
+                            "ltoo",
+                            "nw",
+                            "smom", 
+                            "rrcj",
+                            "vahf",
+                            "wnkj", "wnkj", "wbvu",
+                            
                         ]
         for seq_file in seq_files:
             with open(f".\\temp\\{seq_file}", 'r') as seqfh:
