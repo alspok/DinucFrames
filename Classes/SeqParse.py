@@ -37,7 +37,7 @@ class SeqParse():
                     id = seq_record.id.lower()
                     if (any(item in desc for item in exept_description_list) or
                         any(item in id for item in exept_id_list) or
-                        seq_record.seq < exept_seq_length):
+                        len(seq_record.seq) < exept_seq_length):
                         continue
                     else:
                         yield seq_record
