@@ -9,15 +9,15 @@ class InitValues():
     # taxon_name = "Escherichia coli"
     # taxon_name = "Escherichia"
     # taxon_name = "Bacillus"
-    taxon_name = "Archaea"
+    # taxon_name = "Archaea"
     # taxon_name = "Bacteria"
-    # taxon_name = "Eukaryota"
+    taxon_name = "Eukaryotae"
     # taxon_name = "Viruses"
     # taxon_name = "Fungi"
     # taxon_name = "Dikarya"
     
     # path = "C:\\Users\\hp\\source\\repos\\DinucFrames"
-    path = os.path.getcwd()
+    path = os.getcwd()
     
     # seq_path = "C:\\Users\\hp\\source\\repos\\Sequencies\\Procaryote\\Plasmids\\"
     seq_path = os.getcwd()

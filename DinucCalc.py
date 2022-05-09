@@ -21,8 +21,8 @@ def dinucCalc():
     # seq_record = SeqInput().seqInputFile(f"{iv.seq_path}HepB_geneC.fasta")
     # seq_record = SeqInput().seqInputFile(f"{iv.seq_path}pBR322.fasta")
     # seq_record = SeqInput().seqInputFile(f"{iv.seq_path}pUC19.fasta")
-    seq_record = SeqInput().seqInputFile(f"{iv.seq_path}HepB.fasta")
-    seq_record = SeqInput().seqInputFile(f"{iv.seq_path}E.coli_K12.fasta")
+    # seq_record = SeqInput().seqInputFile(f"{iv.seq_path}HepB.fasta")
+    # seq_record = SeqInput().seqInputFile(f"{iv.seq_path}E.coli_K12.fasta")
     # seq_record = SeqInput().seqInputFile(f"{iv.seq_path}Test.fasta")
     
     for record in seq_record:
