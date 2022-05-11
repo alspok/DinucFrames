@@ -11,7 +11,7 @@ class NCBIData():
     def __init__(self) -> None:
         pass
     
-    def ncbiGenomeData(self, taxon_name: str) -> None:
+    def ncbiGenomeData(self, taxon_name: str) -> int:
         """Download taxon assembly accession numbers to summary.json file from nsbi"""        
         print(f"Downloading {taxon_name} assembly accessions...")
         os.chdir(iv.path)
@@ -36,7 +36,7 @@ class NCBIData():
                 accfh.write(item + "\n")
             
             
-        pass
+        return len(assmbl_list)
         
     """Download sequencies of particular accession numbers"""
     def ncbiSeqData(self, assembly_access: str) -> list:

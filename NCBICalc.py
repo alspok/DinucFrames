@@ -25,29 +25,31 @@ def ncbiCalc():
    """Download letest version of datasets.exe file"""   
    # DownloadDatasets().downloadDatasets()
          
-   """Get list of assembly access list of taxon from ncbi"""
-   assmbl_list = NCBIData().ncbiGenomeData(taxon_name)
+   """Get list of assembly access list of taxon from ncbi and seve to file"""
+   assembly_list_len = NCBIData().ncbiGenomeData(taxon_name)
    # [print(f"{i+1}\t {assmbl}") for (i, assmbl) in enumerate(assmbl_list)]
    
-   i = 1
-   for accession in assmbl_list:
-      print(f"\nTaxon {taxon_name}: assembly {i} of {len(assmbl_list)}")
-      seq_files = NCBIData().ncbiSeqData(accession)
-      seq_oblect = SeqParse().seqParse(seq_files) 
-      for seq_obj in seq_oblect:
-         seq_dict = {}
-         print(f"{seq_obj.description}\t{repr(seq_obj.seq)}\t{len(seq_obj.seq)} bp")
-         seq_dict["name"] = seq_obj.id
-         seq_dict["description"] = seq_obj.description
-         seq_dict["seq_length"] = len(seq_obj.seq)
+   """Read assembly numbers from file and calculate dinuc frequencies"""
+   with open(f".\\DBResults\\{taxon_name}_assembly_nr.acc", "r") as accfh:
+      i = 1
+      for accession in accfh:
+         print(f"\nTaxon {taxon_name}: assembly {i} of {assembly_list_len}")
+         seq_files = NCBIData().ncbiSeqData(accession.rstrip("\n"))
+         seq_oblect = SeqParse().seqParse(seq_files) 
+         for seq_obj in seq_oblect:
+            seq_dict = {}
+            print(f"{seq_obj.description}\t{repr(seq_obj.seq)}\t{len(seq_obj.seq)} bp")
+            seq_dict["name"] = seq_obj.id
+            seq_dict["description"] = seq_obj.description
+            seq_dict["seq_length"] = len(seq_obj.seq)
+            
+            
+            sqliteDB = SqliteDB(iv.db_name, iv.db_table).initTable()
+            sqliteDB.insertRow(seq_dict)
+            
+         DelFiles().delFiles()
+         i += 1
          
-         
-         sqliteDB = SqliteDB(iv.db_name, iv.db_table).initTable()
-         sqliteDB.insertRow(seq_dict)
-         
-      DelFiles().delFiles()
-      i += 1
-      
    pass 
 
 if(__name__ == "__main__"):
