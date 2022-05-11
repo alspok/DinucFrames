@@ -1,5 +1,6 @@
 .vscode/
 Classes/__pycache__/
+DBResults/
 *.sqlite3
 *.zip
 *.fna
