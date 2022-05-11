@@ -10,7 +10,7 @@ class InitValues():
     # taxon_name = "Escherichia"
     # taxon_name = "Bacillus"
     # taxon_name = "Archaea"
-    taxon_name = "Bacteria"
+    # taxon_name = "Bacteria"
     # taxon_name = "Eukaryotae"
     # taxon_name = "Viruses"
     # taxon_name = "Fungi"
@@ -21,7 +21,7 @@ class InitValues():
     
     # seq_path = "C:\\Users\\hp\\source\\repos\\Sequencies\\Procaryote\\Plasmids\\"
     seq_path = os.getcwd()
-    db_name = "dinuc.sqlite3"
+    db_name = f".\\dbresults\\{taxon_name}_dinuc.sqlite3"
     db_table = "dinuc"
     oligo_length = 2
     db_dict = {}

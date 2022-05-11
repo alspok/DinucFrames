@@ -5,7 +5,7 @@ class SqliteDB():
     def __init__(self, database, table) -> None:
         self.database = database
         self.table = table
-        self.engine = create_engine(f'sqlite:///{database}', echo = False)
+        self.engine = create_engine(f'sqlite:///{self.database}', echo = False)
     
     def initTable(self):
         meta = MetaData()
