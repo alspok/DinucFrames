@@ -39,7 +39,7 @@ class OligoRandom():
             
         return rand_seq
                 
-    def monoCount(self, seq:str) -> dict:
+    def monoCount(self, seq: str) -> dict:
         nuc = deepcopy(iv.nuc_count_dict)
         temp = 0
         for key in nuc:

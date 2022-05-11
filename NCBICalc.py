@@ -1,4 +1,5 @@
 from Classes.DelFiles import DelFiles
+from Classes.GCCount import GCCount
 from Classes.InitValues import InitValues as iv
 from Classes.NCBIData import NCBIData
 from Classes.DownloadDatasets import DownloadDatasets
@@ -42,6 +43,7 @@ def ncbiCalc():
             seq_dict["name"] = seq_obj.id
             seq_dict["description"] = seq_obj.description
             seq_dict["seq_length"] = len(seq_obj.seq)
+            seq_dict["gc_percent"] = GCCount().gcCount(seq_obj.seq.lower())
             
             sqliteDB = SqliteDB(iv.db_name, iv.db_table).initTable()
             sqliteDB.insertRow(seq_dict)
