@@ -35,6 +35,7 @@ class NCBIData():
             for item in assmbl_list:
                 accfh.write(item + "\n")
             
+            
         pass
         
     """Download sequencies of particular accession numbers"""
