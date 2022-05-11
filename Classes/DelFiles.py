@@ -10,5 +10,4 @@ class DelFiles():
             os.chdir(path)
             for file in os.listdir(path):
                 os.remove(file)
-        
         pass
