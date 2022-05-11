@@ -24,7 +24,7 @@ class SeqParse():
                             "pesf"
                             "rrcj", "rcwq",
                             "smom", "sthe", "sthd",
-                            "sthb", "sthf" #last
+                            "sthb", "sthf", "stha" #last
                             "vahf",
                             "wnkj", "wnkj", "wbvu",
                         ]
