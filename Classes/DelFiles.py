@@ -9,6 +9,6 @@ class DelFiles():
             path = f"{cwd}\\temp"
             os.chdir(path)
             for file in os.listdir(path):
-                    os.remove(file)
+                os.remove(file)
         
         pass

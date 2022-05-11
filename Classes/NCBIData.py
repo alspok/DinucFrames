@@ -11,7 +11,7 @@ class NCBIData():
     def __init__(self) -> None:
         pass
     
-    def ncbiGenomeData(self, taxon_name: str) -> list:
+    def ncbiGenomeData(self, taxon_name: str) -> int:
         """Download taxon assembly accession numbers to summary.json file from nsbi"""        
         print(f"Downloading {taxon_name} assembly accessions...")
         os.chdir(iv.path)
@@ -23,15 +23,19 @@ class NCBIData():
                         > .\\temp\\summary.dat", shell=True)
         
         """Make list of assembly accession numbers"""
-        
-        assmbl_list = []
-        with open('.\\temp\\summary.dat') as datafh:
+        assembly_list = []
+        with open(".\\temp\\summary.dat", "r") as datafh:
             data_list = [line.rstrip("\n") for line in datafh.readlines()]
             for item in data_list:
                 item = json.loads(item)
-                assmbl_list.append(item["assembly_accession"])
+                assembly_list.append(item["assembly_accession"])
         
-        return assmbl_list
+        """Save assembly taxon accession number to file"""
+        with open(f".\\dbresults\\{taxon_name}_access_number.acc", "w") as accfh:
+            for item in assembly_list:
+                accfh.write(item + "\n")
+        
+        return len(assembly_list)
         
     """Download sequencies of particular accession numbers"""
     def ncbiSeqData(self, assembly_access: str) -> list:
@@ -44,7 +48,7 @@ class NCBIData():
                             --exclude-genomic-cds \
                             --filename .\\temp\\ncbi_dataset.zip", shell=True)
         except Exception as e:
-            print
+            print(f"Error getting sequence: {e}")
                        
         try:
             os.chdir(iv.path)
