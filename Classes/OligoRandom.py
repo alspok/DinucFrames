@@ -1,6 +1,8 @@
 from copy import deepcopy
+from email import utils
 from Classes.InitValues import InitValues as iv
 import random
+import string_utils
 
 """Generate or shuffle string"""
 class OligoRandom():
@@ -54,8 +56,6 @@ class OligoRandom():
                             
         return nuc
     
-    
-    
     """Convert seq to list of particular oligo length"""
     def seqToList(self, seq: str, oligo: int) -> list:
         seq_list = []
@@ -63,3 +63,13 @@ class OligoRandom():
             seq_list.append(seq[i:i+oligo])
         
         return seq_list
+    
+    """Shuffle seq by oligo length substring"""
+    def seqListShuffle(self, seq: str, oligo: int) -> str:
+        seq_list = self.seqToList(seq, oligo)
+        
+        return ''.join(random.shuffle(seq_list))
+    
+    """Shuffle seq string by one character"""
+    def seqStrShuffle(self, seq: str) -> str:
+        return string_utils.shuffle(seq)
