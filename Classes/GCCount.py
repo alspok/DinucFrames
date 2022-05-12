@@ -5,7 +5,7 @@ class GCCount():
         pass
     
     def gcCount(self, seq: str) -> float:
-        gCount = seq.count("g")
-        cCount = seq.count("c")
+        gCount = seq.lower().count("g")
+        cCount = seq.lower().count("c")
         
         return round(((gCount + cCount) / len(seq) ) * 100, 2)

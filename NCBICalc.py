@@ -43,7 +43,7 @@ def ncbiCalc():
             seq_dict["name"] = seq_obj.id
             seq_dict["description"] = seq_obj.description
             seq_dict["seq_length"] = len(seq_obj.seq)
-            seq_dict["gc_percent"] = GCCount().gcCount(seq_obj.seq.lower())
+            seq_dict["gc_percent"] = GCCount().gcCount(seq_obj.seq)
             
             sqliteDB = SqliteDB(iv.db_name, iv.db_table).initTable()
             sqliteDB.insertRow(seq_dict)
