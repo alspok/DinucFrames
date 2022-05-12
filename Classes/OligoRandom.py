@@ -2,10 +2,12 @@ from copy import deepcopy
 from Classes.InitValues import InitValues as iv
 import random
 
+"""Generate or shuffle string"""
 class OligoRandom():
     def __init__(self) -> None:
         pass
     
+    """Make random seq of particular length"""
     def oligoRandom(self, seq_length: int) -> str:
         rand_seq = ''
         while len(rand_seq) < seq_length:
@@ -28,6 +30,7 @@ class OligoRandom():
         
         return rand_seq
     
+    """Make random seq of particular length with some oligo frequencies"""
     def foligoRundom(self, oligo_frq_dict: dict, seq_length: int) -> str:
         rand_seq = ''
         while len(rand_seq) <= seq_length:
@@ -39,6 +42,7 @@ class OligoRandom():
             
         return rand_seq
                 
+    """Count nucleotides in seq"""
     def monoCount(self, seq: str) -> dict:
         nuc = deepcopy(iv.nuc_count_dict)
         temp = 0
@@ -50,6 +54,9 @@ class OligoRandom():
                             
         return nuc
     
+    
+    
+    """Convert seq to list of particular oligo length"""
     def seqToList(self, seq: str, oligo: int) -> list:
         seq_list = []
         for i in range(len(seq) - oligo, oligo):
