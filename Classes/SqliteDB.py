@@ -18,9 +18,12 @@ class SqliteDB():
             Column("gc_percent", Float),
             Column('di_diff_mean', Float),
             Column('di_diff_stdev', Float),
-            Column('mono_shuffle_di_diff', String),
-            Column('di_shuffle_di_diff', String),
-            Column('tri_shuffle_di_diff', String)
+            Column('mono_shuffle_di_diff_mean', Float),
+            Column('mono_shuffle_di_diff_stdev', Float),
+            Column('di_shuffle_di_diff_mean', Float),
+            Column('di_shuffle_di_diff_stdev', Float),
+            Column('tri_shuffle_di_diff_mean', Float),
+            Column('tri_shuffle_di_diff_stdev', Float),
         )
         meta.create_all(self.engine)
         return self
