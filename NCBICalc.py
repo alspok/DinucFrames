@@ -54,6 +54,7 @@ def ncbiCalc():
             stdev = seq_dict["di_diff_stdev"] = round(stat.stdev(dinuc_frq_diff), 6)
             print(f"Dinuc diff mean {mean}  stdev {stdev}")
             
+            
             sqliteDB = SqliteDB(iv.db_name, iv.db_table).initTable()
             sqliteDB.insertRow(seq_dict)
             
