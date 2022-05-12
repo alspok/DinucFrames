@@ -52,7 +52,7 @@ def ncbiCalc():
             dinuc_frq_diff =OligoFrames(seq).diFrame()
             mean = seq_dict["di_diff_mean"] = round(stat.mean(dinuc_frq_diff), 6)
             stdev = seq_dict["di_diff_stdev"] = round(stat.stdev(dinuc_frq_diff), 6)
-            print(f"Dinuc diff mean {mean}  stdev {stdev}")
+            print(f"Dinuc diff mean {mean}  stdev {stdev}", end="\n")
             
             
             sqliteDB = SqliteDB(iv.db_name, iv.db_table).initTable()
