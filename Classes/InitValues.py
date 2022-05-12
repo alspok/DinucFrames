@@ -2,14 +2,14 @@ import os
 
 """Class of init values"""
 class InitValues():
-    # taxon_name = "Methanomassiliicoccaceae"
+    taxon_name = "Methanomassiliicoccaceae"
     #taxon_name = "Viridiplantae"
     # taxon_name = "Chlorophyta"
     # taxon_name = "Homo"
     # taxon_name = "Escherichia coli"
     # taxon_name = "Escherichia"
     # taxon_name = "Bacillus"
-    taxon_name = "Archaea"
+    # taxon_name = "Archaea"
     # taxon_name = "Bacteria"
     # taxon_name = "Eukaryotae"
     # taxon_name = "Viruses"

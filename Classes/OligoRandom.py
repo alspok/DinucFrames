@@ -56,14 +56,15 @@ class OligoRandom():
     """Convert seq to list of particular oligo length"""
     def seqToList(self, seq: str, oligo: int) -> list:
         seq_list = []
-        for i in range(len(seq) - oligo, oligo):
+        for i in range(0, len(seq) - oligo, oligo):
             seq_list.append(seq[i:i+oligo])
         return seq_list
     
     """Shuffle seq by oligo length substring"""
     def seqListShuffle(self, seq: str, oligo: int) -> str:
         seq_list = self.seqToList(seq, oligo)
-        return ''.join(random.shuffle(seq_list))
+        random.shuffle(seq_list)
+        return ''.join(seq_list)
     
     """Shuffle seq string by one character"""
     def seqStrShuffle(self, seq: str) -> str:

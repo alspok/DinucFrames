@@ -55,7 +55,7 @@ def ncbiCalc():
             dinuc_frq_diff = OligoFrames(seq).diFrame()
             mean = seq_dict["di_diff_mean"] = round(stat.mean(dinuc_frq_diff), 6)
             stdev = seq_dict["di_diff_stdev"] = round(stat.stdev(dinuc_frq_diff), 6)
-            print(f"             Dinuc diff mean {mean}  stdev {stdev}")
+            print(f"             Dinuc diff\tmean {mean}\tstdev {stdev}")
             
             """Coun seq dinuc frq differecies mean and standart deviation of shuffled seq"""
             """Mononuc shuffle seq"""
@@ -63,21 +63,21 @@ def ncbiCalc():
             dinuc_frq_diff = OligoFrames(shuffle_seq).diFrame()
             mean = seq_dict["mono_shuffle_di_diff_mean"] = round(stat.mean(dinuc_frq_diff), 6)
             stdev = seq_dict["mono_shuffle_di_diff_stdev"] = round(stat.stdev(dinuc_frq_diff), 6)
-            print(f"Mono shuffle dinuc diff mean {mean}  stdev {stdev}")
+            print(f"Mono shuffle Dinuc diff\tmean {mean}\tstdev {stdev}")
             
             """Dinuc shuffle seq"""
             shuffle_seq = OligoRandom().seqListShuffle(seq, 2)
             dinuc_frq_diff = OligoFrames(shuffle_seq).diFrame()
             mean = seq_dict["di_shuffle_di_diff_mean"] = round(stat.mean(dinuc_frq_diff), 6)
             stdev = seq_dict["di_shuffle_di_diff_stdev"] = round(stat.stdev(dinuc_frq_diff), 6)
-            print(f"   Di shuffle dinuc diff mean {mean}  stdev {stdev}")
+            print(f"  Di shuffle Dinuc diff\tmean {mean}\tstdev {stdev}")
             
             """Trinuc shuffle seq"""
             shuffle_seq = OligoRandom().seqListShuffle(seq, 3)
             dinuc_frq_diff = OligoFrames(shuffle_seq).diFrame()
             mean = seq_dict["tri_shuffle_di_diff_mean"] = round(stat.mean(dinuc_frq_diff), 6)
             stdev = seq_dict["tri_shuffle_di_diff_stdev"] = round(stat.stdev(dinuc_frq_diff), 6)
-            print(f"  Tri shuffle dinuc diff mean {mean}  stdev {stdev}")
+            print(f" Tri shuffle Dinuc diff\tmean {mean}\tstdev {stdev}")
             print()
             
             sqliteDB = SqliteDB(iv.db_name, iv.db_table).initTable()
