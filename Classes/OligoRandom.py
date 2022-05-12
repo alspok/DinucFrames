@@ -29,7 +29,6 @@ class OligoRandom():
             else:
                 print("Something wrong making random seq.")
                 break
-        
         return rand_seq
     
     """Make random seq of particular length with some oligo frequencies"""
@@ -41,7 +40,6 @@ class OligoRandom():
                 if rand <= value[-1]:
                     rand_seq += key
                     break
-            
         return rand_seq
                 
     """Count nucleotides in seq"""
@@ -53,7 +51,6 @@ class OligoRandom():
             nuc[key][1] = nuc[key][0] / len(seq)
             nuc[key][2] = nuc[key][1] + temp
             temp = nuc[key][2]
-                            
         return nuc
     
     """Convert seq to list of particular oligo length"""
@@ -61,13 +58,11 @@ class OligoRandom():
         seq_list = []
         for i in range(len(seq) - oligo, oligo):
             seq_list.append(seq[i:i+oligo])
-        
         return seq_list
     
     """Shuffle seq by oligo length substring"""
     def seqListShuffle(self, seq: str, oligo: int) -> str:
         seq_list = self.seqToList(seq, oligo)
-        
         return ''.join(random.shuffle(seq_list))
     
     """Shuffle seq string by one character"""
