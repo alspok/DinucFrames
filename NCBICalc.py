@@ -3,8 +3,11 @@ from Classes.GCCount import GCCount
 from Classes.InitValues import InitValues as iv
 from Classes.NCBIData import NCBIData
 from Classes.DownloadDatasets import DownloadDatasets
+from Classes.OligoFrames import OligoFrames
 import sys
 import os
+import statistics as stat
+from Classes.OligoFrames import OligoFrames
 
 from Classes.SeqParse import SeqParse
 from Classes.SqliteDB import SqliteDB
@@ -44,6 +47,12 @@ def ncbiCalc():
             seq_dict["description"] = seq_obj.description
             seq_dict["seq_length"] = len(seq_obj.seq)
             seq_dict["gc_percent"] = GCCount().gcCount(seq_obj.seq)
+            
+            seq = str(seq_obj.seq.lower())
+            dinuc_frq_diff =OligoFrames(seq).diFrame()
+            mean = seq_dict["di_diff_mean"] = round(stat.mean(dinuc_frq_diff), 6)
+            stdev = seq_dict["di_diff_stdev"] = round(stat.stdev(dinuc_frq_diff), 6)
+            print(f"Dinuc diff mean {mean}  stdev {stdev}")
             
             sqliteDB = SqliteDB(iv.db_name, iv.db_table).initTable()
             sqliteDB.insertRow(seq_dict)

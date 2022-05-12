@@ -37,10 +37,10 @@ class OligoFrames():
             if di in dinuc_dict:
                 if i % 2 == 0 and di in dinuc_dict:
                     dinuc_dict[di][0] += 1
-                    dinuc_dict[di][3] += dinuc_dict[di][0] / sol
+                    dinuc_dict[di][2] += dinuc_dict[di][0] / sol
                 else:
                     dinuc_dict[di][1] += 1
-                    dinuc_dict[di][4] += dinuc_dict[di][1] / sol
+                    dinuc_dict[di][3] += dinuc_dict[di][1] / sol
             else:
                 continue
             

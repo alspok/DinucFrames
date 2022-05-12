@@ -16,7 +16,8 @@ class SqliteDB():
             Column('description', String),
             Column('seq_length', Integer),
             Column("gc_percent", Float),
-            Column('di_diff', String),
+            Column('di_diff_mean', Float),
+            Column('di_diff_stdev', Float),
             Column('mono_shuffle_di_diff', String),
             Column('di_shuffle_di_diff', String),
             Column('tri_shuffle_di_diff', String)

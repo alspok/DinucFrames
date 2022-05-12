@@ -14,7 +14,7 @@ class InitValues():
     # taxon_name = "Eukaryotae"
     # taxon_name = "Viruses"
     # taxon_name = "Fungi"
-    taxon_name = "Dikarya"
+    # taxon_name = "Dikarya"
     
     # path = "C:\\Users\\hp\\source\\repos\\DinucFrames"
     path = os.getcwd()
@@ -37,8 +37,11 @@ class InitValues():
         for n2 in nuc_list:
             dinuc_list.append(n1 + n2)
     
-    # dictionary of dinucleotides as key. counts, frequencies, differencies in diframe as value
+    # dictionary of dinucleotides as key. counts as values
     dinuc_dict = {key:[0, 0] for key in dinuc_list}
+    
+    # ductuibart of dinucleotides as key. count, frequencies, diff in diframes as values
+    dinuc_frq_dict = {key:[0, 0, 0, 0] for key in dinuc_list}
     
     # list of possible trinucleotides 
     trinuc_list = []
