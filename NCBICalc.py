@@ -8,6 +8,7 @@ import sys
 import os
 import statistics as stat
 from Classes.OligoFrames import OligoFrames
+from Classes.OligoRandom import OligoRandom
 
 from Classes.SeqParse import SeqParse
 from Classes.SqliteDB import SqliteDB
@@ -49,10 +50,34 @@ def ncbiCalc():
             seq_dict["gc_percent"] = GCCount().gcCount(seq_obj.seq)
             
             seq = str(seq_obj.seq.lower())
-            dinuc_frq_diff =OligoFrames(seq).diFrame()
+            
+            """Count seq dinuc frq differencies mean and standart deviation"""
+            dinuc_frq_diff = OligoFrames(seq).diFrame()
             mean = seq_dict["di_diff_mean"] = round(stat.mean(dinuc_frq_diff), 6)
             stdev = seq_dict["di_diff_stdev"] = round(stat.stdev(dinuc_frq_diff), 6)
-            print(f"Dinuc diff mean {mean}  stdev {stdev}", end="\n")
+            print(f"             Dinuc diff mean {mean}  stdev {stdev}", end="\n")
+            
+            """Coun seq dinuc frq differecies mean and standart deviation of shuffled seq"""
+            """Mononuc shuffle seq"""
+            shuffle_seq = OligoRandom().seqListShuffle(seq, 1)
+            dinuc_frq_diff = OligoFrames(shuffle_seq).diFrame()
+            mean = seq_dict["mono_shuffle_di_diff_mean"] = round(stat.mean(dinuc_frq_diff), 6)
+            stdev = seq_dict["mono_shuffle_di_diff_stdev"] = round(stat.stdev(dinuc_frq_diff), 6)
+            print(f"Mono shuffle dinuc diff mean {mean}  stdev {stdev}", end="\n")
+            
+            """Dinuc shuffle seq"""
+            shuffle_seq = OligoRandom().seqListShuffle(seq, 2)
+            dinuc_frq_diff = OligoFrames(shuffle_seq).diFrame()
+            mean = seq_dict["di_shuffle_di_diff_mean"] = round(stat.mean(dinuc_frq_diff), 6)
+            stdev = seq_dict["di_shuffle_di_diff_stdev"] = round(stat.stdev(dinuc_frq_diff), 6)
+            print(f"   Di shuffle dinuc diff mean {mean}  stdev {stdev}", end="\n")
+            
+            """Trinuc shuffle seq"""
+            shuffle_seq = OligoRandom().seqListShuffle(seq, 3)
+            dinuc_frq_diff = OligoFrames(shuffle_seq).diFrame()
+            mean = seq_dict["tri_shuffle_di_diff_mean"] = round(stat.mean(dinuc_frq_diff), 6)
+            stdev = seq_dict["tri_shuffle_di_diff_stdev"] = round(stat.stdev(dinuc_frq_diff), 6)
+            print(f"  Tri shuffle dinuc diff mean {mean}  stdev {stdev}", end="\n")
             
             
             sqliteDB = SqliteDB(iv.db_name, iv.db_table).initTable()
