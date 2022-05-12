@@ -2,7 +2,6 @@ from copy import deepcopy
 from email import utils
 from Classes.InitValues import InitValues as iv
 import random
-import string_utils
 
 """Generate or shuffle string"""
 class OligoRandom():
@@ -65,7 +64,4 @@ class OligoRandom():
         seq_list = self.seqToList(seq, oligo)
         random.shuffle(seq_list)
         return ''.join(seq_list)
-    
-    """Shuffle seq string by one character"""
-    def seqStrShuffle(self, seq: str) -> str:
-        return string_utils.shuffle(seq)
+   
