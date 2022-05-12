@@ -1,5 +1,6 @@
 .vscode/
-Classes/__pycache__/
+__pycache__/
+*.pyc
 DBResults/
 *.sqlite3
 *.zip
