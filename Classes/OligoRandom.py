@@ -63,5 +63,6 @@ class OligoRandom():
     def seqListShuffle(self, seq: str, oligo: int) -> str:
         seq_list = self.seqToList(seq, oligo)
         random.shuffle(seq_list)
+        
         return ''.join(seq_list)
    
