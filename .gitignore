@@ -1,6 +1,7 @@
 .vscode/
 __pycache__/
 *.pyc
+InitValues.py
 DBResults/
 *.sqlite3
 *.zip
