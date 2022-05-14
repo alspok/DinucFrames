@@ -36,7 +36,7 @@ def ncbiCalc():
    
    """Read assembly numbers from file and calculate dinuc frequencies"""
    with open(f".\\DBResults\\{taxon_name}_assembly_nr.acc", "r") as accfh:
-      i = 1
+      i = j = 1
       for accession in accfh:
          print(f"\nTaxon {taxon_name}: assembly {i} of {assembly_list_len}")
          seq_files = NCBIData().ncbiSeqData(accession.rstrip("\n"))
@@ -82,6 +82,7 @@ def ncbiCalc():
             
             sqliteDB = SqliteDB(iv.db_name, iv.db_table).initTable()
             sqliteDB.insertRow(seq_dict)
+            j += 1
             
          DelFiles().delFiles()
          i += 1
