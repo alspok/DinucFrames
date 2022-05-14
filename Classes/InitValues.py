@@ -15,7 +15,9 @@ class InitValues():
     # taxon_name = "Viruses"
     # taxon_name = "Fungi"
     # taxon_name = "Dikarya"
-    
+    # taxon_name = "Amoebozoa"
+    # taxon_name = "Discosea"
+    # taxon_name = "Evosea"
     # path = "C:\\Users\\hp\\source\\repos\\DinucFrames"
     path = os.getcwd()
     
