@@ -43,7 +43,7 @@ def ncbiCalc():
          seq_oblect = SeqParse().seqParse(seq_files) 
          for seq_obj in seq_oblect:
             seq_dict = {}
-            print(f"{seq_obj.description}\n{repr(seq_obj.seq)}\t{len(seq_obj.seq)} bp")
+            print(f"{j}  {seq_obj.description}\n{repr(seq_obj.seq)}\t{len(seq_obj.seq)} bp")
             seq_dict["name"] = seq_obj.id
             seq_dict["description"] = seq_obj.description
             seq_dict["seq_length"] = len(seq_obj.seq)
