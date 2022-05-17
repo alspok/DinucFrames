@@ -67,4 +67,11 @@ class NCBIData():
             pass
             
         return seq_files
+    
+    """Append file with calculated assembly numbers"""
+    def assemblyDone(self, taxon_name: str, accembly_nr: str) -> None:
+        with open(f".\\dbresults\\{taxon_name}_assembly_done.acc", "a") as daccfh:
+            daccfh.write(f"{accembly_nr} calc done.")
+        
+        pass
         

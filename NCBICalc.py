@@ -85,8 +85,9 @@ def ncbiCalc():
             j += 1
             
          DelFiles().delFiles()
+         NCBIData().assemblyDone(taxon_name, accession)
          i += 1
-         
+      
    pass 
 
 if(__name__ == "__main__"):
