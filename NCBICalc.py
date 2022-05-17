@@ -83,9 +83,9 @@ def ncbiCalc():
             sqliteDB = SqliteDB(iv.db_name, iv.db_table).initTable()
             sqliteDB.insertRow(seq_dict)
             j += 1
+            NCBIData().assemblyDone(taxon_name, accession, seq_obj.description)
             
          DelFiles().delFiles()
-         NCBIData().assemblyDone(taxon_name, accession)
          i += 1
       
    pass 

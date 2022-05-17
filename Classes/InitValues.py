@@ -2,7 +2,7 @@ import os
 
 """Class of init values"""
 class InitValues():
-    # taxon_name = "Methanomassiliicoccaceae"
+    taxon_name = "Methanomassiliicoccaceae"
     #taxon_name = "Viridiplantae"
     # taxon_name = "Chlorophyta"
     # taxon_name = "Homo"
@@ -14,7 +14,7 @@ class InitValues():
     # taxon_name = "Eukaryotae"
     # taxon_name = "Viruses"
     # taxon_name = "Fungi"
-    taxon_name = "Dikarya"
+    # taxon_name = "Dikarya"
     # taxon_name = "Amoebozoa"
     # taxon_name = "Discosea"
     # taxon_name = "Evosea"
