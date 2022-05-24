@@ -3,6 +3,7 @@ import json
 import zipfile
 import os
 import pathlib
+from datetime import datetime
 from Bio import SeqIO
 from Classes.InitValues import InitValues as iv
 
@@ -11,36 +12,30 @@ class NCBIData():
     def __init__(self) -> None:
         pass
     
+    """Download taxon assembly accession numbers to summary.dat as json lines file from nsbi"""        
     def ncbiGenomeData(self, taxon_name: str) -> int:
-        """Download taxon assembly accession numbers to summary.json file from nsbi"""        
         print(f"Downloading {taxon_name} assembly accessions...")
-        os.chdir(iv.path)
+        os.chdir(iv.temp_path)
         subprocess.run(f".\\bin\\datasets summary genome taxon {taxon_name} \
-                        --as-json-lines \
                         --reference \
-                        --assmaccs \
                         --assembly-level complete_genome,chromosome \
-                        > .\\temp\\summary.dat", shell=True)
+                        > .\\temp\\summary.json", shell=True)
         
         """Make list of assembly accession numbers"""
         assmbl_list = []
-        with open(f".\\temp\\summary.dat", "r") as datafh:
-            data_list = [line.rstrip("\n") for line in datafh.readlines()]
-            for item in data_list:
-                item = json.loads(item)
-                assmbl_list.append(item["assembly_accession"])
+        with open(f".\\temp\\summary.json", "r", encoding="utf8") as jsonfh, \
+             open(f".\\dbresults\\{taxon_name}_assembly_nr.acc", "w") as accfh:
+            # data_list = [line.rstrip("\n") for line in datafh.readlines()]
+            json_data = json.load(jsonfh)
+            for item in json_data["assemblies"]:
+                assmbl_list.append(f"{item['assembly']['assembly_accession']}\t{item['assembly']['org']['sci_name']}\n")
+            accfh.writelines(assmbl_list)
         
-        """Save assembly accesion numbers to file"""
-        with open(f".\\dbresults\\{taxon_name}_assembly_nr.acc", "w") as accfh:
-            for item in assmbl_list:
-                accfh.write(item + "\n")
-            
-            
         return len(assmbl_list)
-        
+    
     """Download sequencies of particular accession numbers"""
     def ncbiSeqData(self, assembly_access: str) -> list:
-        os.chdir(iv.path)
+        os.chdir(iv.temp_path)
         try:
             subprocess.run(f".\\bin\\datasets download genome accession {assembly_access} \
                             --exclude-rna \
@@ -52,7 +47,7 @@ class NCBIData():
             print
                        
         try:
-            os.chdir(iv.path)
+            os.chdir(iv.temp_path)
             seq_files = []
             with zipfile.ZipFile(".\\temp\\ncbi_dataset.zip") as ziph:
                 for zip_info in ziph.infolist():
@@ -71,8 +66,10 @@ class NCBIData():
     """Append file with calculated assembly numbers"""
     def assemblyDone(self, taxon_name: str, accembly_nr: str, seq_description: str) -> None:
         accembly_nr = accembly_nr.rstrip("\n")
+        now = datetime.now()
+        dt_string = now.strftime("%Y/%m/%d %H:%M:%S")
         with open(f".\\dbresults\\{taxon_name}_assembly_done.acc", "a") as daccfh:
-            daccfh.write(f"{accembly_nr} {seq_description} done.\n")
+            daccfh.write(f"{accembly_nr} {seq_description} {dt_string}.\n")
         
         pass
         
