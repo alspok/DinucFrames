@@ -39,10 +39,8 @@ def ncbiCalc():
       i = j = 1
       for accession in accfh:
          print(f"\nTaxon {taxon_name}: assembly {i} of {assembly_list_len}")
-         # seq_files = NCBIData().ncbiSeqData(accession.rstrip("\n"))
          seq_files = NCBIData().ncbiSeqData(accession.split("\t")[0])
          seq_oblect = SeqParse().seqParse(seq_files)
-         # accession_nr = accession.split("\t")[0]
          
          for seq_obj in seq_oblect:
             seq_dict = {}
