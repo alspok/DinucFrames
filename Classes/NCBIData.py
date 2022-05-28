@@ -69,7 +69,7 @@ class NCBIData():
         
         pass
     
-    """Find *_assembly_done.acc file and read last line"""
+    """Find {taxon_name}_assembly_done.acc file and read last line"""
     def assemblyBreak(self, taxon_name: str) -> str:
         os.chdir(f"{iv.ROOT_DIR}\\DBResults")
         file_list = os.listdir()
@@ -81,5 +81,14 @@ class NCBIData():
         else:
             return "no_acc_file"
         
+    def assemblyPos(self, taxon_name: str, last_assembly_nr: str) -> int:
+        os.chdir(iv.ROOT_DIR)
+        with open(f".\\dbresults\\{taxon_name}_assembly_nr.acc", "r") as accfh:
+            line = accfh.readline()
+            while line:
+                if last_assembly_nr in line:
+                    return accfh.tell()
+                line = accfh.readline()
+        return 0
         
         

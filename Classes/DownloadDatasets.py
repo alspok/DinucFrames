@@ -1,4 +1,6 @@
 import requests
+import os
+from Classes.InitValues import InitValues as iv
 
 class DownloadDatasets():
     def __init__(self) -> None:
@@ -6,6 +8,7 @@ class DownloadDatasets():
     
     def downloadDatasets(self) -> None:
         try:
+            os.chdir(iv.ROOT_DIR)
             print("Downloading datasets.exe...")
             url = 'https://ftp.ncbi.nlm.nih.gov/pub/datasets/command-line/LATEST/win64/datasets.exe'
             req = requests.get(url, allow_redirects=True)
