@@ -9,6 +9,7 @@ import os
 import statistics as stat
 from Classes.OligoFrames import OligoFrames
 from Classes.OligoRandom import OligoRandom
+from Classes.AddComment import AddComment
 
 from Classes.SeqParse import SeqParse
 from Classes.SqliteDB import SqliteDB
@@ -89,6 +90,7 @@ def ncbiCalc():
          DelFiles().delFiles()
          i += 1
       
+         AddComment().addComment(accfh)
    pass 
 
 if(__name__ == "__main__"):
