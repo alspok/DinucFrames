@@ -9,8 +9,6 @@ import os
 import statistics as stat
 from Classes.OligoFrames import OligoFrames
 from Classes.OligoRandom import OligoRandom
-from Classes.AddComment import AddComment
-
 from Classes.SeqParse import SeqParse
 from Classes.SqliteDB import SqliteDB
 
@@ -35,7 +33,11 @@ def ncbiCalc():
    assembly_list_len = NCBIData().ncbiGenomeData(taxon_name)
    # [print(f"{i+1}\t {assmbl}") for (i, assmbl) in enumerate(assmbl_list)]
    
+   """Check for *_assembly_done.acc file, if exists read last assembly nr in it"""
+   last_assembly_nr = NCBIData().assemblyBreak(taxon_name)
+   
    """Read assembly numbers from file and calculate dinuc frequencies"""
+   os.chdir(iv.ROOT_DIR)
    with open(f".\\DBResults\\{taxon_name}_assembly_nr.acc", "r") as accfh:
       i = j = 1
       for accession in accfh:
@@ -85,12 +87,11 @@ def ncbiCalc():
             sqliteDB = SqliteDB(iv.db_name, iv.db_table).initTable()
             sqliteDB.insertRow(seq_dict)
             j += 1
-            NCBIData().assemblyDone(taxon_name, accession, seq_obj.description)
+            NCBIData().assemblyDone(taxon_name, accession)
             
          DelFiles().delFiles()
          i += 1
       
-         AddComment().addComment(accfh)
    pass 
 
 if(__name__ == "__main__"):

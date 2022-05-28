@@ -20,7 +20,7 @@ class InitValues():
     # taxon_name = "Evosea"
     # path = "C:\\Users\\hp\\source\\repos\\DinucFrames"
     
-    temp_path = os.getcwd()
+    ROOT_DIR = os.path.dirname(os.path.abspath("ncbicalc.py"))
     
     # seq_path = "C:\\Users\\hp\\source\\repos\\Sequencies\\Procaryote\\Plasmids\\"
     seq_path = os.getcwd()
