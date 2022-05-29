@@ -37,14 +37,14 @@ def ncbiCalc():
    last_assembly_nr = NCBIData().assemblyBreak(taxon_name)
    
    """Get pos of lest_assembly_nr in {taxon_name}_assembly_nr.acc file"""
-   pos = NCBIData().assemblyPos(taxon_name, last_assembly_nr)
+   pos, i = NCBIData().assemblyPos(taxon_name, last_assembly_nr)
    
    """Read assembly numbers from file and calculate dinuc frequencies"""
    os.chdir(iv.ROOT_DIR)
    with open(f".\\DBResults\\{taxon_name}_assembly_nr.acc", "r") as accfh:
       accfh.seek(pos)
-      i = j = 1
       for accession in accfh:
+         j = 1
          print(f"\nTaxon {taxon_name}: assembly {i} of {assembly_list_len}")
          seq_files = NCBIData().ncbiSeqData(accession.split("\t")[0])
          seq_oblect = SeqParse().seqParse(seq_files)

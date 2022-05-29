@@ -85,10 +85,12 @@ class NCBIData():
         os.chdir(iv.ROOT_DIR)
         with open(f".\\dbresults\\{taxon_name}_assembly_nr.acc", "r") as accfh:
             line = accfh.readline()
+            k = 1
             while line:
                 if last_assembly_nr in line:
-                    return accfh.tell()
+                    return accfh.tell(), k
                 line = accfh.readline()
-        return 0
+                k += 1
+        return 0, k
         
         
