@@ -4,7 +4,7 @@ import os
 class InitValues():
     taxon_name = "Methanomassiliicoccaceae"
     #taxon_name = "Viridiplantae"
-    # taxon_name = "Chlorophyta"
+    taxon_name = "Chlorophyta"
     # taxon_name = "Homo"
     # taxon_name = "Escherichia coli"
     # taxon_name = "Escherichia"

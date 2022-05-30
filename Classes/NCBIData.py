@@ -91,6 +91,6 @@ class NCBIData():
                     return accfh.tell(), k
                 line = accfh.readline()
                 k += 1
-        return 0, k
+        return 0, 1
         
         
