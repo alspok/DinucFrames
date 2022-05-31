@@ -27,7 +27,7 @@ def ncbiCalc():
    DelFiles().delFiles()
    
    """Download letest version of datasets.exe file"""   
-   # DownloadDatasets().downloadDatasets()
+   DownloadDatasets().downloadDatasets()
          
    """Get list of assembly access list of taxon from ncbi and seve to file"""
    assembly_list_len = NCBIData().ncbiGenomeData(taxon_name)
@@ -61,30 +61,30 @@ def ncbiCalc():
             
             """Count seq dinuc frq differencies mean and standart deviation"""
             dinuc_frq_diff = OligoFrames(seq).diFrame()
-            mean = seq_dict["di_diff_mean"] = round(stat.mean(dinuc_frq_diff), 6)
-            stdev = seq_dict["di_diff_stdev"] = round(stat.stdev(dinuc_frq_diff), 6)
+            mean = seq_dict["di_diff_mean"] = round(stat.mean(dinuc_frq_diff), iv.rnd)
+            stdev = seq_dict["di_diff_stdev"] = round(stat.stdev(dinuc_frq_diff), iv.rnd)
             print(f"             Dinuc diff\tmean {mean}\tstdev {stdev}")
             
             """Coun seq dinuc frq differecies mean and standart deviation of shuffled seq"""
             """Mononuc shuffle seq"""
             shuffle_seq = OligoRandom().seqListShuffle(seq, 1)
             dinuc_frq_diff = OligoFrames(shuffle_seq).diFrame()
-            mean = seq_dict["mono_shuffle_di_diff_mean"] = round(stat.mean(dinuc_frq_diff), 6)
-            stdev = seq_dict["mono_shuffle_di_diff_stdev"] = round(stat.stdev(dinuc_frq_diff), 6)
+            mean = seq_dict["mono_shuffle_di_diff_mean"] = round(stat.mean(dinuc_frq_diff), iv.rnd)
+            stdev = seq_dict["mono_shuffle_di_diff_stdev"] = round(stat.stdev(dinuc_frq_diff), iv.rnd)
             print(f"Mono shuffle Dinuc diff\tmean {mean}\tstdev {stdev}")
             
             """Dinuc shuffle seq"""
             shuffle_seq = OligoRandom().seqListShuffle(seq, 2)
             dinuc_frq_diff = OligoFrames(shuffle_seq).diFrame()
-            mean = seq_dict["di_shuffle_di_diff_mean"] = round(stat.mean(dinuc_frq_diff), 6)
-            stdev = seq_dict["di_shuffle_di_diff_stdev"] = round(stat.stdev(dinuc_frq_diff), 6)
+            mean = seq_dict["di_shuffle_di_diff_mean"] = round(stat.mean(dinuc_frq_diff), iv.rnd)
+            stdev = seq_dict["di_shuffle_di_diff_stdev"] = round(stat.stdev(dinuc_frq_diff), iv.rnd)
             print(f"  Di shuffle Dinuc diff\tmean {mean}\tstdev {stdev}")
             
             """Trinuc shuffle seq"""
             shuffle_seq = OligoRandom().seqListShuffle(seq, 3)
             dinuc_frq_diff = OligoFrames(shuffle_seq).diFrame()
-            mean = seq_dict["tri_shuffle_di_diff_mean"] = round(stat.mean(dinuc_frq_diff), 6)
-            stdev = seq_dict["tri_shuffle_di_diff_stdev"] = round(stat.stdev(dinuc_frq_diff), 6)
+            mean = seq_dict["tri_shuffle_di_diff_mean"] = round(stat.mean(dinuc_frq_diff), 8)
+            stdev = seq_dict["tri_shuffle_di_diff_stdev"] = round(stat.stdev(dinuc_frq_diff), 8)
             print(f" Tri shuffle Dinuc diff\tmean {mean}\tstdev {stdev}")
             print()
             
