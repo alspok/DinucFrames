@@ -11,7 +11,7 @@ class InitValues():
     # taxon_name = "Bacillus"
     # taxon_name = "Archaea"
     # taxon_name = "Bacteria"
-    taxon_name = "Eukaryota"
+    # taxon_name = "Eukaryota"
     # taxon_name = "Viruses"
     # taxon_name = "Fungi"
     # taxon_name = "Dikarya"
