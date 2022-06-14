@@ -63,6 +63,7 @@ def ncbiCalc():
             dinuc_frq_diff = OligoFrames(seq).diFrame()
             mean = seq_dict["di_diff_mean"] = round(stat.mean(dinuc_frq_diff), 6)
             stdev = seq_dict["di_diff_stdev"] = round(stat.stdev(dinuc_frq_diff), 6)
+            seq_dict["di_diff_frq_list"] = ', '.join(str(round(item, 12)) for item in dinuc_frq_diff)
             print(f"             Dinuc diff\tmean {mean}\tstdev {stdev}")
             
             """Coun seq dinuc frq differecies mean and standart deviation of shuffled seq"""
@@ -71,6 +72,7 @@ def ncbiCalc():
             dinuc_frq_diff = OligoFrames(shuffle_seq).diFrame()
             mean = seq_dict["mono_shuffle_di_diff_mean"] = round(stat.mean(dinuc_frq_diff), 6)
             stdev = seq_dict["mono_shuffle_di_diff_stdev"] = round(stat.stdev(dinuc_frq_diff), 6)
+            seq_dict["mono_shuffle_di_diff_frq_list"] = ', '.join(str(round(item, 12)) for item in dinuc_frq_diff)
             print(f"Mono shuffle Dinuc diff\tmean {mean}\tstdev {stdev}")
             
             """Dinuc shuffle seq"""
@@ -78,6 +80,7 @@ def ncbiCalc():
             dinuc_frq_diff = OligoFrames(shuffle_seq).diFrame()
             mean = seq_dict["di_shuffle_di_diff_mean"] = round(stat.mean(dinuc_frq_diff), 6)
             stdev = seq_dict["di_shuffle_di_diff_stdev"] = round(stat.stdev(dinuc_frq_diff), 6)
+            seq_dict["di_shuffle_di_diff_frq_list"] = ', '.join(str(round(item, 12)) for item in dinuc_frq_diff)
             print(f"  Di shuffle Dinuc diff\tmean {mean}\tstdev {stdev}")
             
             """Trinuc shuffle seq"""
@@ -85,6 +88,7 @@ def ncbiCalc():
             dinuc_frq_diff = OligoFrames(shuffle_seq).diFrame()
             mean = seq_dict["tri_shuffle_di_diff_mean"] = round(stat.mean(dinuc_frq_diff), 6)
             stdev = seq_dict["tri_shuffle_di_diff_stdev"] = round(stat.stdev(dinuc_frq_diff), 6)
+            seq_dict["tri_shuffle_di_diff_frq_list"] = ', '.join(str(round(item, 12)) for item in dinuc_frq_diff)
             print(f" Tri shuffle Dinuc diff\tmean {mean}\tstdev {stdev}")
             print()
             

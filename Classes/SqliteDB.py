@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Float
-from Classes.InitValues import InitValues as iv
+# from Classes.InitValues import InitValues as iv
 
 class SqliteDB():
     def __init__(self, database, table) -> None:
@@ -18,12 +18,16 @@ class SqliteDB():
             Column("gc_percent", Float),
             Column('di_diff_mean', Float),
             Column('di_diff_stdev', Float),
+            Column('di_diff_frq_list', String),
             Column('mono_shuffle_di_diff_mean', Float),
             Column('mono_shuffle_di_diff_stdev', Float),
+            Column('mono_shuffle_di_diff_frq_list', String),
             Column('di_shuffle_di_diff_mean', Float),
             Column('di_shuffle_di_diff_stdev', Float),
+            Column('di_shuffle_di_diff_frq_list', String),
             Column('tri_shuffle_di_diff_mean', Float),
             Column('tri_shuffle_di_diff_stdev', Float),
+            Column('tri_shuffle_di_diff_frq_list', String)
         )
         meta.create_all(self.engine)
         return self
