@@ -11,7 +11,7 @@ class InitValues():
     # taxon_name = "Bacillus"
     # taxon_name = "Archaea"
     # taxon_name = "Bacteria"
-    # taxon_name = "Eukaryota"
+    taxon_name = "Eukaryota"
     # taxon_name = "Viruses"
     # taxon_name = "Fungi"
     # taxon_name = "Dikarya"
@@ -28,6 +28,7 @@ class InitValues():
     db_table = "dinuc"
     oligo_length = 2
     db_dict = {}
+    rnd = 9
     
     nuc_frq_dict = {'a': 0.2, 'c': 0.5, 'g': 0.8, 't': 1}
     

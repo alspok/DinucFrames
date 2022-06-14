@@ -27,7 +27,7 @@ def ncbiCalc():
    DelFiles().delFiles()
    
    """Download letest version of datasets.exe file"""   
-   # DownloadDatasets().downloadDatasets()
+   DownloadDatasets().downloadDatasets()
          
    """Get list of assembly access list of taxon from ncbi and seve to file"""
    assembly_list_len = NCBIData().ncbiGenomeData(taxon_name)
