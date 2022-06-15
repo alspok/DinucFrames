@@ -1,6 +1,5 @@
 .vscode/
 __pycache__/
-Classes/__pycache__/
 *.pyc
 InitValues.py
 DBResults/
